@@ -14,14 +14,13 @@ from openpyxl.utils import get_column_letter
 query = input('Enter a search term: ')
 
 
-def main():
+def main(): # runs main program
     top_results = get_link()
     results_list = get_title(top_results)
     create_sheet(results_list)
 
 
-
-def get_link():  # gets links for first page results, and appends to list
+def get_link():  # gets links for first page results, and appends it to results list
     search = googlesearch.search(query, tld='com', num=10, stop=1, pause=2)
     results = []
     for link in search:
@@ -29,8 +28,7 @@ def get_link():  # gets links for first page results, and appends to list
     return results
 
 
-def get_title(results):
-    '''Gets title from top search results & creates a dict'''
+def get_title(results): # Gets title from top search results & stores in list of dicts
     result_dicts = []
     position = 1
     for link in results:
@@ -50,7 +48,7 @@ def get_title(results):
     return result_dicts
 
 
-def create_sheet(page_dicts):
+def create_sheet(page_dicts): # Creates a workbook called Search_Results and prints search result data on each row
     wb = Workbook()
     dest_file = 'Search_Results.xlsx'
     ws1 = wb.active
@@ -64,6 +62,7 @@ def create_sheet(page_dicts):
         rowx += 1
     wb.save(filename = dest_file)
     wb.close()
+    print("Your file is ready")
 
 
 if __name__ == '__main__':
