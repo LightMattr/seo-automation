@@ -1,6 +1,6 @@
 # simple-seo-automation
 
-This script performs a Google search based on a given keyword and stores the results in a spreadsheet. The spreadsheet contains the url, title, and position of each search result.
+This script performs a Google search based on a given keyword and stores the top results in a spreadsheet. The spreadsheet contains the url, title, and position of each search result.
 
 ## Prerequisites
 The following packages are required to run the script:
