@@ -1,10 +1,8 @@
-import sys
-
 import googlesearch
 import requests
 import bs4
-import webbrowser
 import pandas as pd
+
 
 class GoogleSearch:
     def __init__(self):
@@ -17,7 +15,6 @@ class GoogleSearch:
         for link in search:
             results.append(link)
         return results
-
 
     def get_results(self, results):
         '''Saves search related information to a dictionary'''
@@ -43,7 +40,6 @@ class GoogleSearch:
             position += 1
         return page_info
 
-
     def save_to_file(self, page_info):
         '''Converts page_info dict into a dataframe and saves to an excel file'''
         df = pd.DataFrame.from_dict(page_info)
@@ -51,11 +47,13 @@ class GoogleSearch:
         print('Results have been saved to a file in your working directory')
         return df
 
+
 def main():
     my_search = GoogleSearch()
     top_links = my_search.get_links()
     search_results = my_search.get_results(top_links)
-    file = my_search.save_to_file(search_results)
+    my_search.save_to_file(search_results)
+
 
 if __name__ == '__main__':
     main()
